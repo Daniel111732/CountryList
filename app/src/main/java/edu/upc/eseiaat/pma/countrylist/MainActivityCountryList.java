@@ -113,7 +113,7 @@ public class MainActivityCountryList extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(MainActivityCountryList.this,
-                            message_blank,Toast.LENGTH_SHORT).show();
+                            message_blank,Toast.LENGTH_LONG).show();
                 }
 
             }
