@@ -90,8 +90,7 @@ public class MainActivityCountryList extends AppCompatActivity {
         Button boto = (Button) findViewById(R.id.button);
         final EditText text = (EditText) findViewById(R.id.editText);
 
-        //Posem listener al botó
-        //TODO: Afegeix els nous paisos en ordre alfabètic
+        //Posem listener al botó per afegir nous paisos
         boto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,9 +98,11 @@ public class MainActivityCountryList extends AppCompatActivity {
                 String new_country = text.getText().toString();
                 String message_add = getResources().getString(R.string.message_add);
                 String message_blank = getResources().getString(R.string.message_blank);
+                int index=0;
 
                 if(new_country.length()>0) {
-                    country_list.add(0,new_country);
+                    index=ordenar(new_country,country_list);
+                    country_list.add(index,new_country);
                     adapter.notifyDataSetChanged();
                     text.setText(null);
 
@@ -118,5 +119,18 @@ public class MainActivityCountryList extends AppCompatActivity {
 
             }
         });
+    }
+
+    //Funció per ubicar un string dins de la llista de paisos
+    private int ordenar(String new_country, ArrayList country_list) {
+        int index=0;
+
+        for(int i=0;i<country_list.size();i++){
+            if ((int)new_country.charAt(0) > (int)country_list.get(index).toString().charAt(0)) {
+                index++;
+            }
+        }
+
+        return index;
     }
 }
