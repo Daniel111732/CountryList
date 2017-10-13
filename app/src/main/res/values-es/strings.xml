@@ -6,4 +6,6 @@
     <string name="erase">Eliminar</string>
     <string name="message_select">Ha seleccionado:</string>
     <string name="message_delete">Ha eliminado:</string>
+    <string name="text_button">Añadir</string>
+    <string name="hint_textview">Nuevo país</string>
 </resources>

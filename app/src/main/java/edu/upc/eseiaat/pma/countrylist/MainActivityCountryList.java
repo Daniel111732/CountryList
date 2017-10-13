@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -40,9 +43,9 @@ public class MainActivityCountryList extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View item, int pos, long id) {
-                final String msg_select = getResources().getString(R.string.message_select);
+                String message_select = getResources().getString(R.string.message_select);
                 Toast.makeText(MainActivityCountryList.this,
-                        msg_select+ " " +country_list.get(pos),
+                        message_select+ " " +country_list.get(pos),
                         Toast.LENGTH_SHORT)
                         .show();
             }
@@ -53,7 +56,7 @@ public class MainActivityCountryList extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View item, final int pos, long id) {
                 String msg = getResources().getString(R.string.confirm_message);
-                final String msg_delete = getResources().getString(R.string.message_delete);
+                final String message_delete = getResources().getString(R.string.message_delete);
 
                 AlertDialog.Builder builder =
                         new AlertDialog.Builder(MainActivityCountryList.this);
@@ -64,7 +67,7 @@ public class MainActivityCountryList extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(MainActivityCountryList.this,
-                                msg_delete + " " + country_list.get(pos),
+                                message_delete + " " + country_list.get(pos),
                                 Toast.LENGTH_SHORT)
                                 .show();
                         country_list.remove(pos);
@@ -75,6 +78,21 @@ public class MainActivityCountryList extends AppCompatActivity {
                 builder.create().show();
 
                 return true;
+            }
+        });
+
+        //Creem els objectes boto i text i els hi associem els elements del layout
+        Button boto = (Button) findViewById(R.id.button);
+        final EditText text = (EditText) findViewById(R.id.editText);
+
+        //Posem listener al botó
+        //TODO: Listener al boto
+        boto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String new_country = text.getText().toString();
+                country_list.add(new_country);
+                adapter.notifyDataSetChanged();
             }
         });
     }
