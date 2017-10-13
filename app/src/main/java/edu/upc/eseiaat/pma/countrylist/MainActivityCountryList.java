@@ -1,10 +1,12 @@
 package edu.upc.eseiaat.pma.countrylist;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -102,8 +104,12 @@ public class MainActivityCountryList extends AppCompatActivity {
                     country_list.add(new_country);
                     adapter.notifyDataSetChanged();
                     text.setText(null);
+
                     Toast.makeText(MainActivityCountryList.this,
-                            message_add + " " + new_country,Toast.LENGTH_SHORT).show();
+                            message_add + " " + new_country,Toast.LENGTH_LONG).show();
+
+                    InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(text.getWindowToken(), 0);
                 }
                 else{
                     Toast.makeText(MainActivityCountryList.this,
