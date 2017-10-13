@@ -86,13 +86,20 @@ public class MainActivityCountryList extends AppCompatActivity {
         final EditText text = (EditText) findViewById(R.id.editText);
 
         //Posem listener al botó
-        //TODO: Listener al boto
+        //TODO: Mostra un toast al afegir un pais nou
+        //TODO: Si pulsem el boto sense haver escrit un pais, surt un toast
+        //TODO: Afegeix els nous paisos en ordre alfabètic
         boto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String new_country = text.getText().toString();
-                country_list.add(new_country);
-                adapter.notifyDataSetChanged();
+                if(new_country.length()>0) {
+                    country_list.add(new_country);
+                    adapter.notifyDataSetChanged();
+                }
+                else{
+                    //TODO
+                }
             }
         });
     }
