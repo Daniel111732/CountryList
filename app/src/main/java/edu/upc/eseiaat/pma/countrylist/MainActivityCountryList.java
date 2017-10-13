@@ -43,11 +43,13 @@ public class MainActivityCountryList extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View item, int pos, long id) {
+
                 String message_select = getResources().getString(R.string.message_select);
                 Toast.makeText(MainActivityCountryList.this,
                         message_select+ " " +country_list.get(pos),
                         Toast.LENGTH_SHORT)
                         .show();
+
             }
         });
 
@@ -55,6 +57,7 @@ public class MainActivityCountryList extends AppCompatActivity {
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View item, final int pos, long id) {
+
                 String msg = getResources().getString(R.string.confirm_message);
                 final String message_delete = getResources().getString(R.string.message_delete);
 
@@ -76,8 +79,8 @@ public class MainActivityCountryList extends AppCompatActivity {
                 });
                 builder.setNegativeButton(android.R.string.cancel,null);
                 builder.create().show();
-
                 return true;
+
             }
         });
 
@@ -86,20 +89,27 @@ public class MainActivityCountryList extends AppCompatActivity {
         final EditText text = (EditText) findViewById(R.id.editText);
 
         //Posem listener al botó
-        //TODO: Mostra un toast al afegir un pais nou
-        //TODO: Si pulsem el boto sense haver escrit un pais, surt un toast
         //TODO: Afegeix els nous paisos en ordre alfabètic
         boto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String new_country = text.getText().toString();
+                String message_add = getResources().getString(R.string.message_add);
+                String message_blank = getResources().getString(R.string.message_blank);
+
                 if(new_country.length()>0) {
                     country_list.add(new_country);
                     adapter.notifyDataSetChanged();
+                    text.setText(null);
+                    Toast.makeText(MainActivityCountryList.this,
+                            message_add + " " + new_country,Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //TODO
+                    Toast.makeText(MainActivityCountryList.this,
+                            message_blank,Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }
