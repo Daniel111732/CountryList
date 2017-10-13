@@ -101,7 +101,7 @@ public class MainActivityCountryList extends AppCompatActivity {
                 String message_blank = getResources().getString(R.string.message_blank);
 
                 if(new_country.length()>0) {
-                    country_list.add(new_country);
+                    country_list.add(0,new_country);
                     adapter.notifyDataSetChanged();
                     text.setText(null);
 
