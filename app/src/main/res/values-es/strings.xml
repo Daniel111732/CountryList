@@ -8,4 +8,6 @@
     <string name="message_delete">Ha eliminado:</string>
     <string name="text_button">Añadir</string>
     <string name="hint_textview">Nuevo país</string>
+    <string name="message_blank">Escribe un nuevo país</string>
+    <string name="message_add">Nuevo país añadido:</string>
 </resources>

@@ -8,5 +8,5 @@
     <string name="text_button">Add</string>
     <string name="hint_textview">New country</string>
     <string name="message_add">New country added:</string>
-    <string name="message_blank">Please, type a new country</string>
+    <string name="message_blank">Please type a new country</string>
 </resources>
